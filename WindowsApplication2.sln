@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TechJournalLoader", "WindowsApplication2\TechJournalLoader.vbproj", "{F6601B76-5810-48B6-A017-879197CDDFCB}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TJReader", "TJReader\TJReader.vbproj", "{9718D9FE-790D-4C9A-94FE-734FF1E669DD}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TechJournalLoaderElastic", "TechJournalLoaderElastic\TechJournalLoaderElastic.vbproj", "{00D2D22F-680E-450A-B446-34763BF2299C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F31A08D4-F1C6-4050-980F-CB5FA31C77FB}"
+	ProjectSection(SolutionItems) = preProject
+		Performance1.psess = Performance1.psess
+		Performance2.psess = Performance2.psess
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6601B76-5810-48B6-A017-879197CDDFCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6601B76-5810-48B6-A017-879197CDDFCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6601B76-5810-48B6-A017-879197CDDFCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6601B76-5810-48B6-A017-879197CDDFCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9718D9FE-790D-4C9A-94FE-734FF1E669DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9718D9FE-790D-4C9A-94FE-734FF1E669DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9718D9FE-790D-4C9A-94FE-734FF1E669DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9718D9FE-790D-4C9A-94FE-734FF1E669DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00D2D22F-680E-450A-B446-34763BF2299C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00D2D22F-680E-450A-B446-34763BF2299C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00D2D22F-680E-450A-B446-34763BF2299C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00D2D22F-680E-450A-B446-34763BF2299C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
