@@ -214,6 +214,8 @@ Public Class TJ
                         Delimeter = BufferStr.IndexOf(",")
                         If Delimeter > 0 Then
                             StrValue = BufferStr.Substring(0, Delimeter).Trim
+                        ElseIf Delimeter = -1
+                            StrValue = BufferStr
                         End If
 
                         If BufferStr.Length > Delimeter Then
