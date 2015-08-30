@@ -584,37 +584,38 @@ Public Class Form1
             Try
                 Dim objConn As New SqlConnection(ConnectionString.Text.Trim)
                 objConn.Open()
-                Dim command As New SqlCommand("	CREATE TABLE [dbo].[logs](		" + _
-                                              "		[DateTime] [datetime] NULL,	" + _
-                                              "		[FileName] [char](200) NULL,	" + _
-                                              "		[Moment] [char](12) NULL,	" + _
-                                              "		[Duration] [float] NULL,	" + _
-                                              "		[EventName] [char](15) NULL,	" + _
-                                              "		[Process] [char](50) NULL,	" + _
-                                              "		[Level] [char](3) NULL,	" + _
-                                              "		[ProcessName] [char](50) NULL,	" + _
-                                              "		[text] [varchar](max) NULL,	" + _
-                                              "		[EventNumber] [int] NULL,	" + _
-                                              "		[t_clientID] [char](10) NULL,	" + _
-                                              "		[t_applicationName] [char](50) NULL,	" + _
-                                              "		[t_computerName] [char](50) NULL,	" + _
-                                              "		[t_connectID] [char](10) NULL,	" + _
-                                              "		[SessionID] [char](10) NULL,	" + _
-                                              "		[Usr] [char](100) NULL,	" + _
-                                              "		[AppID] [char](20) NULL,	" + _
-                                              "		[dbpid] [char](10) NULL,	" + _
-                                              "		[Sql] [varchar](max) NULL,	" + _
-                                              "		[TablesList] [varchar](max) NULL,	" + _
-                                              "		[Prm] [varchar](max) NULL,	" + _
-                                              "		[ILev] [char](20) NULL,	" + _
-                                              "		[Rows] [char](10) NULL,	" + _
-                                              "		[Context] [varchar](max) NULL,	" + _
-                                              "		[Func] [char](50) NULL,	" + _
-                                              "		[Trans] [char](1) NULL,	" + _
-                                              "		[RowsAffected] [char](10) NULL,	" + _
-                                              "		[Descr] [varchar](max) NULL,	" + _
-                                              "		[planSQLText] [varchar](max) NULL,	" + _
-                                              "		[Exception] [char](100) NULL	" + _
+                Dim command As New SqlCommand("	CREATE TABLE [dbo].[logs](		" +
+                                              "		[DateTime] [datetime] NULL,	" +
+                                              "		[FileName] [char](200) NULL,	" +
+                                              "		[Moment] [char](12) NULL,	" +
+                                              "		[Duration] [numeric](18, 5) NULL,	" +
+                                              "		[EventName] [char](15) NULL,	" +
+                                              "		[Process] [char](50) NULL,	" +
+                                              "		[Level] [char](3) NULL,	" +
+                                              "		[ProcessName] [char](50) NULL,	" +
+                                              "		[text] [varchar](max) NULL,	" +
+                                              "		[EventNumber] [int] NULL,	" +
+                                              "		[t_clientID] [char](10) NULL,	" +
+                                              "		[t_applicationName] [char](50) NULL,	" +
+                                              "		[t_computerName] [char](50) NULL,	" +
+                                              "		[t_connectID] [char](10) NULL,	" +
+                                              "		[SessionID] [char](10) NULL,	" +
+                                              "		[Usr] [char](100) NULL,	" +
+                                              "		[AppID] [char](20) NULL,	" +
+                                              "		[dbpid] [char](10) NULL,	" +
+                                              "		[Sql] [varchar](max) NULL,	" +
+                                              "		[TablesList] [varchar](max) NULL,	" +
+                                              "		[Prm] [varchar](max) NULL,	" +
+                                              "		[ILev] [char](20) NULL,	" +
+                                              "		[Rows] [char](10) NULL,	" +
+                                              "		[Context] [varchar](max) NULL,	" +
+                                              "		[ContextLastRow] [varchar](max) NULL,	" +
+                                              "		[Func] [char](50) NULL,	" +
+                                              "		[Trans] [char](1) NULL,	" +
+                                              "		[RowsAffected] [char](10) NULL,	" +
+                                              "		[Descr] [varchar](max) NULL,	" +
+                                              "		[planSQLText] [varchar](max) NULL,	" +
+                                              "		[Exception] [char](100) NULL	" +
                                               "	) ON [PRIMARY]", objConn)
                 command.ExecuteNonQuery()
                 command.CommandText = "SELECT TOP 1 * FROM logs"

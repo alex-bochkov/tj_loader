@@ -9,7 +9,7 @@ Imports System.Text.RegularExpressions
 Public Class TJ
 
     Structure TJRecord
-        Dim DateTime As Date
+        Dim DateTime As String
         Dim ID As Guid
         Dim FileName
         Dim Moment
@@ -37,6 +37,7 @@ Public Class TJ
         Dim ILev
         Dim Rows
         Dim Context
+        Dim ContextLastRow
         Dim Func
         Dim Trans
         Dim RowsAffected
@@ -136,9 +137,12 @@ Public Class TJ
                 ItIs83 = True
             End If
 
-            Dim d As DateTime = New Date(2000 + fileName.Substring(0, 2), fileName.Substring(2, 2), fileName.Substring(4, 2), fileName.Substring(6, 2), BufferStr.Substring(0, 2), BufferStr.Substring(3, 2))
+            Dim d As String = New Date(2000 + fileName.Substring(0, 2), fileName.Substring(2, 2), fileName.Substring(4, 2),
+                                       fileName.Substring(6, 2), BufferStr.Substring(0, 2), BufferStr.Substring(3, 2)).ToString("yyyy-MM-dd HH:mm:ss")
 
-            Rec.DateTime = d
+            '2015-08-18 11:00:15.153'
+
+
             Rec.FileName = exportedAddressFile.Trim
             Rec.text = FullString
 
@@ -151,9 +155,12 @@ Public Class TJ
                 BufferStr = BufferStr.Substring(11)
             End If
 
+            'add milliseconds into string date
+            Rec.DateTime = d + "." + Rec.Moment.Substring(6, 3)
+
             Delimeter = BufferStr.IndexOf(",")
             If Delimeter > 0 Then
-                Rec.Duration = Convert.ToInt32(BufferStr.Substring(0, Delimeter))
+                Rec.Duration = Convert.ToInt32(BufferStr.Substring(0, Delimeter)) / IIf(ItIs83, 100000, 10000)
             End If
 
             BufferStr = BufferStr.Substring(Delimeter + 1)
@@ -271,6 +278,7 @@ Public Class TJ
 
                         While match.Success
                             Dim S As String = match.Value.Replace("FROM ", "").Trim
+                            S = S.Replace("FROM" & vbCrLf, "").Trim
                             'remove subqueries and temp tables
                             If Not S.StartsWith("(") And Not S.StartsWith("#") Then
                                 TablesList = TablesList + " | " + S.Replace("dbo.", "")
@@ -282,6 +290,7 @@ Public Class TJ
 
                         While match.Success
                             Dim S As String = match.Value.Replace("JOIN ", "").Trim
+                            S = S.Replace("JOIN" & vbCrLf, "").Trim
                             'remove subqueries and temp tables
                             If Not S.StartsWith("(") And Not S.StartsWith("#") Then
                                 TablesList = TablesList + " | " + S.Replace("dbo.", "")
@@ -293,6 +302,7 @@ Public Class TJ
 
                         While match.Success
                             Dim S As String = match.Value.Replace("INTO ", "").Trim
+                            S = S.Replace("INTO" & vbCrLf, "").Trim
                             'remove subqueries and temp tables
                             If Not S.StartsWith("(") And Not S.StartsWith("#") Then
                                 TablesList = TablesList + " | " + S.Replace("dbo.", "")
@@ -318,6 +328,12 @@ Public Class TJ
                 ElseIf ParamName = "Context" Then
                     '        Output0Buffer.Context.AddBlobData(System.Text.Encoding.Unicode.GetBytes(StrValue))
                     Rec.Context = StrValue
+
+                    Dim TextLines() As String = StrValue.Split(Environment.NewLine.ToCharArray, System.StringSplitOptions.RemoveEmptyEntries)
+                    If TextLines.Length > 0 Then
+                        Rec.ContextLastRow = TextLines(TextLines.Length - 1).Trim
+                    End If
+
                 ElseIf ParamName = "Trans" Then
                     '        Output0Buffer.Trans = StrValue
                     Rec.Trans = StrValue
@@ -384,7 +400,7 @@ Public Class TJ
 
             Delimeter = BufferStr.IndexOf(",")
             If Delimeter > 0 Then
-                Rec.Varibles.Add("Duration", Convert.ToInt32(BufferStr.Substring(0, Delimeter)))
+                Rec.Varibles.Add("Duration", Convert.ToInt32(BufferStr.Substring(0, Delimeter)) / IIf(ItIs83, 100000, 10000))
             End If
 
             BufferStr = BufferStr.Substring(Delimeter + 1)
@@ -537,11 +553,11 @@ Public Class TJ
             Dim command As New SqlCommand("INSERT INTO [dbo].[logs] ([DateTime],[Moment],[FileName],[Duration],[EventName]," +
                                           "[Process],[Level],[ProcessName],[text],[EventNumber],[t_clientID]" +
                                           ",[t_applicationName],[t_computerName],[t_connectID],[SessionID],[Usr]" +
-                                          ",[AppID],[dbpid],[Sql],[TablesList],[Prm],[ILev],[Rows],[Context],[Func],[Trans]" +
+                                          ",[AppID],[dbpid],[Sql],[TablesList],[Prm],[ILev],[Rows],[Context],[ContextLastRow],[Func],[Trans]" +
                                           ",[RowsAffected],[Descr],[planSQLText],[Exception]) " +
                                           "VALUES (@DateTime,@Moment,@FileName,@Duration,@EventName,@Process,@Level," +
                                           "@ProcessName,@text,@EventNumber,@t_clientID,@t_applicationName,@t_computerName," +
-                                          "@t_connectID,@SessionID,@Usr,@AppID,@dbpid,@Sql,@TablesList,@Prm,@ILev,@Rows,@Context,@Func," +
+                                          "@t_connectID,@SessionID,@Usr,@AppID,@dbpid,@Sql,@TablesList,@Prm,@ILev,@Rows,@Context,@ContextLastRow,@Func," +
                                           "@Trans,@RowsAffected,@Descr,@planSQLText,@Exception)", objConn)
 
             If UploadToMSSQL Then
@@ -646,11 +662,11 @@ Public Class TJ
         Sub WriteRecordToDB(command As SqlCommand, Rec As TJRecord)
 
             command.Parameters.Clear()
-            command.Parameters.Add("@DateTime", SqlDbType.DateTime, 0, "DateTime").Value = Rec.DateTime
+            command.Parameters.Add("@DateTime", SqlDbType.Char, 25, "DateTime").Value = Rec.DateTime
 
             command.Parameters.Add("@FileName", SqlDbType.Char, 200, "FileName").Value = Rec.FileName
             command.Parameters.Add("@Moment", SqlDbType.Char, 12, "Moment").Value = Rec.Moment
-            command.Parameters.Add("@Duration", SqlDbType.Float, 0, "Duration").Value = Rec.Duration
+            command.Parameters.Add("@Duration", SqlDbType.Decimal, 0, "Duration").Value = Rec.Duration
             command.Parameters.Add("@EventName", SqlDbType.Char, 15, "EventName").Value = IIf(Rec.EventName Is Nothing, "", Rec.EventName)
             command.Parameters.Add("@Process", SqlDbType.Char, 50, "Process").Value = IIf(Rec.Process Is Nothing, "", Rec.Process)
 
@@ -672,6 +688,7 @@ Public Class TJ
             command.Parameters.Add("@ILev", SqlDbType.Char, 20, "ILev").Value = IIf(Rec.ILev Is Nothing, "", Rec.ILev)
             command.Parameters.Add("@Rows", SqlDbType.Char, 10, "Rows").Value = IIf(Rec.Rows Is Nothing, "", Rec.Rows)
             command.Parameters.Add("@Context", SqlDbType.VarChar, 0, "Context").Value = IIf(Rec.Context Is Nothing, "", Rec.Context)
+            command.Parameters.Add("@ContextLastRow", SqlDbType.VarChar, 0, "ContextLastRow").Value = IIf(Rec.ContextLastRow Is Nothing, "", Rec.ContextLastRow)
             command.Parameters.Add("@Func", SqlDbType.Char, 50, "Func").Value = IIf(Rec.Func Is Nothing, "", Rec.Func)
             command.Parameters.Add("@Trans", SqlDbType.Char, 1, "Trans").Value = IIf(Rec.Trans Is Nothing, "", Rec.Trans)
             command.Parameters.Add("@RowsAffected", SqlDbType.Char, 10, "RowsAffected").Value = IIf(Rec.RowsAffected Is Nothing, "", Rec.RowsAffected)
