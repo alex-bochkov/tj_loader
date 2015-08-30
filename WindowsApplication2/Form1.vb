@@ -618,6 +618,14 @@ Public Class Form1
                                               "		[Exception] [char](100) NULL	" +
                                               "	) ON [PRIMARY]", objConn)
                 command.ExecuteNonQuery()
+                command.CommandText = "CREATE CLUSTERED INDEX cix_Logs ON [dbo].[logs] ([DateTime],[EventName],[ProcessName],[t_clientID],[SessionID])"
+                command.ExecuteNonQuery()
+                Try
+                    'Если версия MSSQL позволяет, то сразу и сожмем данные
+                    command.CommandText = "ALTER INDEX cix_Logs ON [dbo].[logs] REBUILD PARTITION = ALL WITH (DATA_COMPRESSION = PAGE)"
+                    command.ExecuteNonQuery()
+                Catch ex As Exception
+                End Try
                 command.CommandText = "SELECT TOP 1 * FROM logs"
                 command.ExecuteReader()
                 MsgBox("Таблица создана успешно!")
