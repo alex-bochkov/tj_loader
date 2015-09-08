@@ -326,8 +326,8 @@ Partial Class Form1
         Me.QueryText.Name = "QueryText"
         Me.QueryText.Size = New System.Drawing.Size(692, 130)
         Me.QueryText.TabIndex = 2
-        Me.QueryText.Text = "SELECT TOP 10 "" + vbNewLine + _" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "DateTime, FileName, Moment, Duration, EventName," & _
-    " "" + vbNewLine + _" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Process, Level, ProcessName, text, EventNumber, "" + vbNewLin" & _
+        Me.QueryText.Text = "SELECT TOP 10 "" + vbNewLine + _" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "DateTime, FileName, Moment, Duration, EventName," &
+    " "" + vbNewLine + _" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Process, Level, ProcessName, text, EventNumber, "" + vbNewLin" &
     "e + _" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "t_clientID, t_applicat"
         '
         'DataGridView

@@ -159,21 +159,6 @@
   <metadata name="TabPage2.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="TabPage1.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TabPage3.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TabPage2.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Button3.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="RichTextBox1.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="Button3.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -181,14 +166,14 @@
     <value>True</value>
   </metadata>
   <data name="RichTextBox1.Text" xml:space="preserve">
-    <value>Это приложение позволяет выполнять разбор текстовых файлов технологического журнала с расширением *.log на события и запись этих событий в таблицу базы MS SQL.
+    <value>Приложение позволяет выполнить разбор текстовых файлов технологического журнала с расширением *.log на события и записать эти события в таблицу базы MS SQL.
 Обработка файлов производится в многопоточном режиме, что позволяет загружать большие объемы информации за относительно небольшое время.
 Для начала использования приложения требуется:
 1) создать на сервере MS SQL новую пустую базу
 2) заполнить строку соединения с сервером по шаблону:
 для windows-авторизации Data Source=MSSQL1;Server=имя сервера;Database=имя базы;Integrated Security=true;
 для обычной авторизации  Data Source=MSSQL1;Server=имя сервера;Database=имя базы;Password=Пароль;User ID=Имя пользователя;
-3) нажать кнопку "Создать служебную таблицу", которая подключится к серверу и выполнит создание структуры таблицы для событий
+3) нажать кнопку "Создать служебную таблицу" для создания целевой таблицы для событий
 
 Порядок загрузки файлов:
 1) указать строку соединения как описано выше;
@@ -197,10 +182,8 @@
 4) нажать кнопку "Заполнить список файлов" - программа найдет все файлы ТЖ в указанном каталоге и отобразит их список;
 5) нажать кнопку "Запустить разбор" - программа начнет параллельное чтение файлов, их разбор и запись полученных событий в структурированном виде в базу данных.
 
-Примечание.
-* Для строковых реквизитов типа текста запроса, плана запроса и т.д. все переводы строк сохраняются, но этого не видно при просмотре записей в таблице через SQL Server Management Studio.
-* Полученную информацию в базе удобно просматривать через внешние источники данных в 1С.
-* Любой feedback приветствуется в комментариях к публикации http://infostart.ru/public/117023/</value>
+Исходные коды опубликованы по лицензии GNU GPL - https://ru.wikipedia.org/wiki/GNU_General_Public_License
+Информация об ошибках и опыте применения приветствуется в комментариях к публикации http://infostart.ru/public/117023/</value>
   </data>
   <metadata name="TabPage1.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -211,22 +194,7 @@
   <metadata name="Label5.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="Button6.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Label5.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="TabPage3.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="SplitContainer1.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="ToolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>620, 17</value>
-  </metadata>
-  <metadata name="ToolStrip1.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="SplitContainer1.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -263,33 +231,33 @@
   <data name="ToolStripButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAYdSURBVEhLtZVpUFNnFIY/3CodK1aNgqLWURSsLe4ILhcR
+        AUGsiIJIDRHBoFEQKvLDzghoErYUFUErUpewiaCAxqAotyhuHfewmIAGTJUIWhXqn868Mz1Aag21M/3T
+        M/PMt8y973PP/eYm7MOysrIaMnbs2Jm2traz/yvW1tbvsbGxmSEQCAaZ4szLz89Pkqc+/DaT342snxOR
+        fUOK43fkyH+QhKLaJJTUJ+FMQxJO18tRopHj5D0plLcSkF29Hfv5KCSrIrC7eCNSDu566ezsHGSK7Sk7
+        OzunI+WKP7icieCUE+BWagefy5Ox+ooDRHenYIvuK+wwfA2ZcRqS26ZD1jod8XpHRNZOxYab9gjk6fry
+        cViUZwPuiA1ScuLfjRkzZoIpnjGRSLRrbaEvXA7ZgctzgLDKHZFXlyP+rh9StKtwwBCAnPY1yH0bhIKO
+        tch7HYSfjAHI1PsjWbMc22s8EXJhHlyVo8BlDUfosSXgOC7CFM/YJolE7pvrBufD9ojjo1FnNEL/5g1e
+        vHuHDuLdv/A78bLzDZqNz1Db9AjhZYtJIMC6Yxzc3Ny3meIZk5BgWb475uY4IOtGFurb2tDc0YF2U8jH
+        wv/iZWcHWl60ou6xDgkXhOAyBQg5sQju7r0EPieXwIkEB2+SoL0dLZ2dePWRwA/p6eAtWozPUdeoRUJF
+        CLgMAUJzl8DDw6NXB0UemJNjTx1kov5lG/hnxVA9S4O6i1/T0PTqfnfo287XOK/fi7MtyVA9TYG6+RAa
+        DXpodA2IV4uwYK8AYbmevQRbt8p9STA7ezIyr2egrv05bhlvIkIzDus1g7uJ1DhA/6oehY1xEJn2RA+t
+        UP7wRzQZmvGgoQ7xKhHmpwoQrvSGl5fX3wKxWCz3zl+MmYcm4UDNPmhetNAhUxeGC1h11Rp+V4d2E3LN
+        nsZh79dpNUI8bTdA29KIu7UPEH92PVykAmw4utS8g7CwMDmXOR8OabbYfyUd942NaPrNgNbONpyuy4Zr
+        hQCuF4abEVw5H/o2HVra9Gh4Uo/bD+8g7sx6zIi2wioFZ37IoSRY8IMLRkYNQlxFLG4234e2/TEMbwx0
+        iK2Q81vglD/yPXPyrME/qoSxQ48nrVrUNj7A9ds1EB/xw7i1DH6y3oLQULlzylwMFX8KSYkE529cBv+w
+        GhoS/dJUA+74PEzJGmXG8sLF0D2/h/vaG+Cv8Th/qQwh+7xh68/wTSJn/opEJJglnY3P1g9EWEE4Sq+q
+        cfH6JZy4dAyjt4zEwI19MGhzf4zfbovBkoE0HwBLcR9wqRz4KypU8mU4W1EMoWIpRvsy+O74h0Akd4yb
+        Acu1/ekrFKGIbii4XAQuhsNMyTTM2jINLlFzUF55HKvTl8MikKHPGoLGFSk+UFedQpmqAOuSvGDjxbCM
+        7jMXiETyqTGO6BfYF4EH6beGL0YJXwoVfxZV1efpKdWorlGjpkYFvroUC7c6Y0SAACMCCRqjMyUoO5eL
+        b2WeGLWUwWdbL4FQKJTbR30Ji2CGlekBOEFPf5IvQSl/BmrqpoovB08jT2ue5DxfSHt5qKxSQn3xBMpV
+        BAmCEz0w1o/BmwRm30GXYJLEHiyU2pOuwFF1AfIvFqHkcgnO8adxkagiIc8XEQVEHqFEFQkqK5WoUCtx
+        jgRrYhdjgtCi+xWZCYLXBcsmhkwC28ow0t8a4ekRiMmKQWL2DqQeTUBG7m5kF0px7JQMyhKiuIfjRVIc
+        LdyDI3l7oDgcBcdVQzF1W18sow48PT2jTPGMubq6bubEHNgKBhbJ0J86GbKBYZTYAnaSfnCM7I+52/ph
+        YQwD9x3RNUYTUYzOg8FFwuBE87lSC0wI6IvNqevg5OS00hTf/V/8edyuuCdT/OkcXC3Ql0SDghhGCBnG
+        k2xKuAVmiiloE4Vu/gBaL4xgcN7IMI2utV/RDyujOaSlpd6j2IE96T01wNLSco6/v/+p6OhoTWxsbMPO
+        73dqExLjtTKZVKdIlekUijSdYp9Ct2+/Qrc/Q6HL6ILmGbS3Nz1Zm65I1iYlyeuCgoJOUZYTZX7SE91T
+        FoQlMYywJcYTdsQkYvJ/oOu6icQXhA0xmOhD/N/F2J+XuHCh8E+ZcAAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="LogsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
