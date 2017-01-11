@@ -662,34 +662,34 @@ Public Class Form1
 
     Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
 
-        Dim xlApp As Excel.Application
-        Dim xlWorkBook As Excel.Workbook
-        Dim xlWorkSheet As Excel.Worksheet
-        Dim misValue As Object = System.Reflection.Missing.Value
-        Dim i As Integer
-        Dim j As Integer
+        'Dim xlApp As Excel.Application
+        'Dim xlWorkBook As Excel.Workbook
+        'Dim xlWorkSheet As Excel.Worksheet
+        'Dim misValue As Object = System.Reflection.Missing.Value
+        'Dim i As Integer
+        'Dim j As Integer
 
-        SaveFileDialog.ShowDialog()
+        'SaveFileDialog.ShowDialog()
 
-        xlApp = New Excel.ApplicationClass
-        xlWorkBook = xlApp.Workbooks.Add(misValue)
-        xlWorkSheet = xlWorkBook.Sheets(1)
+        'xlApp = New Excel.ApplicationClass
+        'xlWorkBook = xlApp.Workbooks.Add(misValue)
+        'xlWorkSheet = xlWorkBook.Sheets(1)
 
-        For i = 0 To DataGridView.RowCount - 2
-            For j = 0 To DataGridView.ColumnCount - 1
-                xlWorkSheet.Cells(i + 1, j + 1) = DataGridView(j, i).Value.ToString()
-            Next
-        Next
+        'For i = 0 To DataGridView.RowCount - 2
+        '    For j = 0 To DataGridView.ColumnCount - 1
+        '        xlWorkSheet.Cells(i + 1, j + 1) = DataGridView(j, i).Value.ToString()
+        '    Next
+        'Next
 
-        xlWorkSheet.SaveAs(SaveFileDialog.FileName)
-        xlWorkBook.Close()
-        xlApp.Quit()
+        'xlWorkSheet.SaveAs(SaveFileDialog.FileName)
+        'xlWorkBook.Close()
+        'xlApp.Quit()
 
-        releaseObject(xlApp)
-        releaseObject(xlWorkBook)
-        releaseObject(xlWorkSheet)
+        'releaseObject(xlApp)
+        'releaseObject(xlWorkBook)
+        'releaseObject(xlWorkSheet)
 
-        MsgBox("Выгрузка завершена!")
+        'MsgBox("Выгрузка завершена!")
     End Sub
 
     Private Sub releaseObject(ByVal obj As Object)

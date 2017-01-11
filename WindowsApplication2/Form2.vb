@@ -227,79 +227,79 @@ Public Class Form2
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
-        Dim xlApp As Excel.Application
-        Dim xlWorkBook As Excel.Workbook
-        Dim xlWorkSheet As Excel.Worksheet
-        Dim misValue As Object = System.Reflection.Missing.Value
+        'Dim xlApp As Excel.Application
+        'Dim xlWorkBook As Excel.Workbook
+        'Dim xlWorkSheet As Excel.Worksheet
+        'Dim misValue As Object = System.Reflection.Missing.Value
 
 
-        SaveFileDialog.ShowDialog()
+        'SaveFileDialog.ShowDialog()
 
-        xlApp = New Excel.ApplicationClass
-        xlWorkBook = xlApp.Workbooks.Add(misValue)
-        xlWorkSheet = xlWorkBook.Sheets(1)
+        'xlApp = New Excel.ApplicationClass
+        'xlWorkBook = xlApp.Workbooks.Add(misValue)
+        'xlWorkSheet = xlWorkBook.Sheets(1)
 
-        xlWorkSheet.Columns(1).NumberFormat = "0,00E+00"
-        xlWorkSheet.Columns(2).NumberFormat = "0,00E+00"
-        xlWorkSheet.Columns(3).NumberFormat = "0,00E+00"
-        xlWorkSheet.Columns(4).NumberFormat = "0,00E+00"
-        xlWorkSheet.Columns(5).NumberFormat = "0,00E+00"
-        xlWorkSheet.Columns(6).NumberFormat = "0,00E+00"
-        xlWorkSheet.Columns(7).NumberFormat = "0,00E+00"
-        xlWorkSheet.Columns(8).NumberFormat = "0,00E+00"
+        'xlWorkSheet.Columns(1).NumberFormat = "0,00E+00"
+        'xlWorkSheet.Columns(2).NumberFormat = "0,00E+00"
+        'xlWorkSheet.Columns(3).NumberFormat = "0,00E+00"
+        'xlWorkSheet.Columns(4).NumberFormat = "0,00E+00"
+        'xlWorkSheet.Columns(5).NumberFormat = "0,00E+00"
+        'xlWorkSheet.Columns(6).NumberFormat = "0,00E+00"
+        'xlWorkSheet.Columns(7).NumberFormat = "0,00E+00"
+        'xlWorkSheet.Columns(8).NumberFormat = "0,00E+00"
 
-        xlWorkSheet.Cells(1, 1) = "Rows"
-        xlWorkSheet.Cells(1, 2) = "Executes"
-        xlWorkSheet.Cells(1, 3) = "EstimateRows"
-        xlWorkSheet.Cells(1, 4) = "EstimateIO"
-        xlWorkSheet.Cells(1, 5) = "EstimateCPU"
-        xlWorkSheet.Cells(1, 6) = "AvgRowSize"
-        xlWorkSheet.Cells(1, 7) = "TotalSubtreeCost"
-        xlWorkSheet.Cells(1, 8) = "EstimateExecutions"
-        'xlWorkSheet.Cells(1, 9) = "Level"
-        For i As Integer = 9 To MaxLevel + 9
-            xlWorkSheet.Columns(i).ColumnWidth = 0.83
-        Next
+        'xlWorkSheet.Cells(1, 1) = "Rows"
+        'xlWorkSheet.Cells(1, 2) = "Executes"
+        'xlWorkSheet.Cells(1, 3) = "EstimateRows"
+        'xlWorkSheet.Cells(1, 4) = "EstimateIO"
+        'xlWorkSheet.Cells(1, 5) = "EstimateCPU"
+        'xlWorkSheet.Cells(1, 6) = "AvgRowSize"
+        'xlWorkSheet.Cells(1, 7) = "TotalSubtreeCost"
+        'xlWorkSheet.Cells(1, 8) = "EstimateExecutions"
+        ''xlWorkSheet.Cells(1, 9) = "Level"
+        'For i As Integer = 9 To MaxLevel + 9
+        '    xlWorkSheet.Columns(i).ColumnWidth = 0.83
+        'Next
 
-        xlWorkSheet.Cells(1, 9) = "StmtText"
+        'xlWorkSheet.Cells(1, 9) = "StmtText"
 
-        Dim Count As Integer = 2
-        For Each ss In ArrayString
-            If Not ss Is Nothing Then
-                xlWorkSheet.Cells(Count, 1) = ss.s1.Replace(".", ",")
-                xlWorkSheet.Cells(Count, 2) = ss.s2.Replace(".", ",")
-                xlWorkSheet.Cells(Count, 3) = ss.s3.Replace(".", ",")
-                xlWorkSheet.Cells(Count, 4) = ss.s4.Replace(".", ",")
-                xlWorkSheet.Cells(Count, 5) = ss.s5.Replace(".", ",")
-                xlWorkSheet.Cells(Count, 6) = ss.s6.Replace(".", ",")
-                xlWorkSheet.Cells(Count, 7) = ss.s7.Replace(".", ",")
-                xlWorkSheet.Cells(Count, 8) = ss.s8.Replace(".", ",")
-                'xlWorkSheet.Cells(Count, 9) = ss.Level
-                xlWorkSheet.Cells(Count, ss.Level + 9) = ss.Text
-                Count += 1
-            End If
-        Next
+        'Dim Count As Integer = 2
+        'For Each ss In ArrayString
+        '    If Not ss Is Nothing Then
+        '        xlWorkSheet.Cells(Count, 1) = ss.s1.Replace(".", ",")
+        '        xlWorkSheet.Cells(Count, 2) = ss.s2.Replace(".", ",")
+        '        xlWorkSheet.Cells(Count, 3) = ss.s3.Replace(".", ",")
+        '        xlWorkSheet.Cells(Count, 4) = ss.s4.Replace(".", ",")
+        '        xlWorkSheet.Cells(Count, 5) = ss.s5.Replace(".", ",")
+        '        xlWorkSheet.Cells(Count, 6) = ss.s6.Replace(".", ",")
+        '        xlWorkSheet.Cells(Count, 7) = ss.s7.Replace(".", ",")
+        '        xlWorkSheet.Cells(Count, 8) = ss.s8.Replace(".", ",")
+        '        'xlWorkSheet.Cells(Count, 9) = ss.Level
+        '        xlWorkSheet.Cells(Count, ss.Level + 9) = ss.Text
+        '        Count += 1
+        '    End If
+        'Next
 
-        xlWorkSheet.Columns(1).NumberFormat = "0,00"
-        xlWorkSheet.Columns(2).NumberFormat = "0,00"
-        xlWorkSheet.Columns(3).NumberFormat = "0,00"
-        xlWorkSheet.Columns(4).NumberFormat = "0,00"
-        xlWorkSheet.Columns(5).NumberFormat = "0,00"
-        xlWorkSheet.Columns(6).NumberFormat = "0,00"
-        xlWorkSheet.Columns(7).NumberFormat = "0,00"
-        xlWorkSheet.Columns(8).NumberFormat = "0,00"
+        'xlWorkSheet.Columns(1).NumberFormat = "0,00"
+        'xlWorkSheet.Columns(2).NumberFormat = "0,00"
+        'xlWorkSheet.Columns(3).NumberFormat = "0,00"
+        'xlWorkSheet.Columns(4).NumberFormat = "0,00"
+        'xlWorkSheet.Columns(5).NumberFormat = "0,00"
+        'xlWorkSheet.Columns(6).NumberFormat = "0,00"
+        'xlWorkSheet.Columns(7).NumberFormat = "0,00"
+        'xlWorkSheet.Columns(8).NumberFormat = "0,00"
 
-        xlWorkSheet.Columns("A:H").EntireColumn.AutoFit()
+        'xlWorkSheet.Columns("A:H").EntireColumn.AutoFit()
 
-        xlWorkSheet.SaveAs(SaveFileDialog.FileName)
-        xlWorkBook.Close(True)
-        xlApp.Quit()
+        'xlWorkSheet.SaveAs(SaveFileDialog.FileName)
+        'xlWorkBook.Close(True)
+        'xlApp.Quit()
 
-        releaseObject(xlApp)
-        releaseObject(xlWorkBook)
-        releaseObject(xlWorkSheet)
+        'releaseObject(xlApp)
+        'releaseObject(xlWorkBook)
+        'releaseObject(xlWorkSheet)
 
-        MsgBox("Выгрузка завершена!")
+        'MsgBox("Выгрузка завершена!")
     End Sub
     Private Sub releaseObject(ByVal obj As Object)
         Try
